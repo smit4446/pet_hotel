@@ -1,4 +1,4 @@
 const router = require('express').Router();
-// const pool = require('../modules/pool');
+const pool = require('../modules/pool');
 
 module.exports = router;

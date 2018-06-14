@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-route.js"></script>
+    <script src="scripts/client.js"></script>
+    <script src="scripts/controllers/owner.controller.js"></script>
+    <script src="scripts/controllers/pet.controller.js"></script>
+    <script src="scripts/services/petHotelService"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Pet Hotel</title>
+</head>
+<body ng-app="myApp">
+    <div class="nav container">
+        <h1 class="jumbotron">Philly's Taft Hotel</h1>
+        <a ng-href="/"><button>Dashboard</button></a>
+        <a ng-href="#!/owners"><button>Manage Owners</button></a>
+        
+    </div>
+    <ng-view>
+
+    </ng-view>
+</body>
+</html>
