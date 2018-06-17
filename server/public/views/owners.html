@@ -1,1 +1,25 @@
-<h1>Add Owner</h1>
+<div ng-controller="ownerController as OC" class="container">
+    <h2>Add Owner</h2>
+    <form ng-submit="OC.addOwner(OC.newOwner)">
+    <input ng-model="OC.newOwner.first_name" type="text" placeholder="Owner First Name">
+    <input ng-model="OC.newOwner.last_name" type="text" placeholder="Owner Last Name">
+    <input type="submit">
+    </form>
+
+    <h2>Owners</h2>
+
+    <table>
+            <th>
+                <tr>
+                    <td>Name</td>
+                    <td>Number of Pets</td>
+                    <td>Actions</td>
+                </tr>
+            </th>
+            <tr ng-repeat="owner in OC.ownersArray">
+                    <td>{{owner.first_name}} {{owner.last_name}}</td>
+                    <td>{{owner.pets}}</td>
+                    <td><button ng-click="OC.deleteOwner($index)">Delete</button></td>
+                </tr>
+        </table>
+</div>
