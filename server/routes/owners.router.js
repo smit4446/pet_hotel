@@ -3,10 +3,14 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('In owner-router GET to read');
-  
-    const queryText = `SELECT owners.id, owners.first_name, owners.last_name FROM owners`;
+
+    const queryText = ` SELECT owners.id, owners.first_name, owners.last_name, count(pets.id) FROM owners
+    LEFT JOIN pets ON  pets.owner_id = owners.id
+    GROUP BY owners.id;`;
     pool.query(queryText)
       .then((result) => {
+        console.log(result.rows, 'in owners router');
+        
         res.send(result.rows);
       })
       .catch((err) => {
@@ -15,10 +19,7 @@ router.get('/', (req, res) => {
       })
   });
 
-  // const queryText = `SELECT owners.id, count(pets.id) as pets, owners.first_name, owners.last_name FROM pet_owners
-  // JOIN pets on pet_owners.pet_id = pets.id
-  //   JOIN owners ON pet_owners.owner_id = owners.id
-  //   GROUP BY owners.id;`;
+ 
 
   router.delete('/:id', (req, res) => {
     const newData = req.params;

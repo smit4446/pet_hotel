@@ -39,13 +39,13 @@ myApp.service('petService', function($http){
         })
     }
 
-    vm.postPet = function (newPet) {
-        $http({
+    vm.postPet = function () {
+        return $http({
             method: 'POST',
             url: '/pets',
-            data: newPet
+            data: vm.newPet
         }).then((response) => {
-            console.log('added pet in POST', newPet);
+            console.log('added pet in POST', vm.newPet);
             vm.getPets();
         }).catch((error) => {
             console.log('error adding pet in POST', error);
@@ -53,7 +53,7 @@ myApp.service('petService', function($http){
     }
 
     vm.postOwner = function (newOwner) {
-        $http({
+        return $http({
             method: 'POST',
             url: '/owners',
             data: newOwner
@@ -63,6 +63,18 @@ myApp.service('petService', function($http){
         }).catch((error) => {
             console.log('error adding owner in POST', error);
         });
+    }
+
+    vm.putPet = function(){
+        return $http({
+            method: 'PUT',
+            url: '/pets',
+            data: vm.petUpdate
+        }).then((response) => {
+            vm.getPets();
+        }).catch((error)=>{
+            console.log('error updating pet', error);   
+        })
     }
 
  });

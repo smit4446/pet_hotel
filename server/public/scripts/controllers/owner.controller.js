@@ -20,7 +20,11 @@ myApp.controller('ownerController', function(petService){
 
     vm.addOwner = function(newOwner) {
         petService.postOwner(newOwner)
-        vm.showOwners()
+        .then(function(){
+            console.log('about to show owners');
+            vm.showOwners();
+            vm.clearFields(); 
+        })
     }
 
     vm.clearFields = function(){

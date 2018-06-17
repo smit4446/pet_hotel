@@ -1,15 +1,15 @@
 <div ng-controller="petController as PC" class="container">
 <h2>Add Pet</h2>
 
-<form ng-submit="PC.addPet(PC.newPet)">
-<input ng-model="PC.newPet.name" type="text" placeholder="Pet Name">
-<input ng-model="PC.newPet.color" type="text" placeholder="Pet Color">
-<input ng-model="PC.newPet.breed" type="text" placeholder="Pet Breed">
-<select ng-controller="ownerController as OC">
+<form ng-submit="PC.addPet()">
+<input ng-model="PC.petNameIn" type="text" placeholder="Pet Name">
+<input ng-model="PC.petColorIn" type="text" placeholder="Pet Color">
+<input ng-model="PC.petBreedIn" type="text" placeholder="Pet Breed">
+<select ng-controller="ownerController as OC" ng-model="PC.ownerIn">
     <!-- not selected / blank option -->
     <option value="">---Please select---</option>
     <!-- repeat over ships -->
-    <option ng-repeat="owner in OC.ownersArray" value="{{owner.first_name}}{{owner.last_name}}">{{owner.first_name}} {{owner.last_name}}</option>
+    <option ng-repeat="owner in OC.ownersArray" value="{{owner.id}}">{{owner.first_name}} {{owner.last_name}}</option>
 </select>
 <input type="submit">
 </form>
@@ -32,7 +32,7 @@
             <td>{{pet.name}}</td>
             <td>{{pet.breed}}</td>
             <td>{{pet.color}}</td>
-            <td><button ng-toggle="PC.is_checked_in()">{{pet.is_checked_in}}</button></td>
+            <td><button ng-click="PC.petToggle(pet)" value="{{pet.is_checked_in}}">{{pet.is_checked_in}}</button></td>
            
             <td><button ng-click="PC.deletePet($index)">Delete</button></td>
     </tr>

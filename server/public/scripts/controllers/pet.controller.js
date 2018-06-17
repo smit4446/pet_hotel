@@ -18,10 +18,36 @@ myApp.controller('petController', function(petService){
         })        
     }
 
-    vm.addPet = function(newPet){
-        console.log('in addPet', newPet);
-        petService.postPet(newPet)
-        vm.showPets();
+    vm.addPet = function(){
+        vm.newPet = {
+            name: vm.petNameIn,
+            color: vm.petColorIn,
+            breed: vm.petBreedIn,
+            owner_id: vm.ownerIn,
+            is_checked_in: 'IN'
+        }
+        petService.newPet = vm.newPet
+        console.log('in addPet', vm.newPet)
+        petService.postPet()
+        .then(function(){
+            console.log('about to show pets');
+            vm.showPets();
+            vm.clearFields();
+        })
+    }
+
+    vm.petToggle = function(pet){
+        console.log('in pet toggle',pet);
+        vm.checkedIn = {
+            id: pet.id,
+            is_checked_in: 'OUT'
+         }
+         petService.petUpdate = vm.checkedIn;
+         petService.putPet()
+         .then(function(){
+             console.log('about to update a pet');
+             vm.showPets();
+         })
     }
 
     vm.clearFields = function(){
