@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
   router.delete('/:id', (req, res) => {
     const newData = req.params;
     console.log('In pets-router DELETE to delete', newData);
-    const queryText = 'DELETE FROM pets WHERE id=$1';
+    const queryText = 'DELETE FROM pets WHERE id=$1;';
     pool.query(queryText, [newData.id])
       .then((results)=>{
         console.log('Successful delete of pet', results);
@@ -41,6 +41,18 @@ router.get('/', (req, res) => {
       }).catch((error)=>{
         console.log('Error deleting pet', error);
         res.sendStatus(500);
+      })
+  });
+
+  router.put('/', (req,res) => {
+    console.log('In pets-router PUT to update');
+    const queryText = 'UPDATE pets SET is_checked_in = $1 where id=$2;';
+    pool.query(queryText, [req.body.is_checked_in, req.body.id])
+      .then((results)=>{
+        res.sendStatus(200);
+      }).catch((error)=>{
+        console.log('Error updating pet', error);
+        res.sendStatus(500);      
       })
   });
 

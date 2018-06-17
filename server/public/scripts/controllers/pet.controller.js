@@ -36,18 +36,18 @@ myApp.controller('petController', function(petService){
         })
     }
 
-    vm.petToggle = function(pet){
-        console.log('in pet toggle',pet);
+    vm.petToggle = function(PET){
+       let checkedInStatus = PET.is_checked_in == 'OUT' ? 'IN' : 'OUT';
         vm.checkedIn = {
-            id: pet.id,
-            is_checked_in: 'OUT'
-         }
-         petService.petUpdate = vm.checkedIn;
-         petService.putPet()
-         .then(function(){
-             console.log('about to update a pet');
-             vm.showPets();
-         })
+            is_checked_in: checkedInStatus,
+            id: PET.id
+        }
+        petService.petUpdate = vm.checkedIn;
+        petService.putPet()
+        .then(function(){
+            console.log('about to update a pet', vm.checkedIn);
+            vm.showPets();
+        })
     }
 
     vm.clearFields = function(){

@@ -64,11 +64,11 @@ myApp.service('petService', function($http){
             console.log('error adding owner in POST', error);
         });
     }
-
+ 
     vm.putPet = function(){
         return $http({
             method: 'PUT',
-            url: '/pets',
+            url: `/pets`,
             data: vm.petUpdate
         }).then((response) => {
             vm.getPets();
