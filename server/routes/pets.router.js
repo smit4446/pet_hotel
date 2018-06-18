@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 router.get('/', (req, res) => {
     console.log('In pets-router GET to read');
   
-    const queryText = `SELECT pets.id, pets.owner_id, pets.name, pets.breed, pets.color, pets.is_checked_in, owners.first_name, owners.last_name FROM pets
+    const queryText = `SELECT pets.id, pets.image_path, pets.owner_id, pets.name, pets.breed, pets.color, pets.is_checked_in, owners.first_name, owners.last_name FROM pets
     LEFT JOIN owners ON  pets.owner_id = owners.id
     GROUP BY pets.id, owners.first_name, owners.last_name;`;
     pool.query(queryText)
