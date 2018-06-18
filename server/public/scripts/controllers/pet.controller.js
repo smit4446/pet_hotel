@@ -21,6 +21,7 @@ myApp.controller('petController', function(petService){
 
     vm.addPet = function(){
         vm.newPetIn = {
+            image_path: 'best-in-show.jpg',
             name: vm.petNameIn,
             color: vm.petColorIn,
             breed: vm.petBreedIn,

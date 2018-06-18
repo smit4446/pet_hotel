@@ -19,9 +19,9 @@ router.get('/', (req, res) => {
 
   router.post('/', function (req,res){
     console.log('POST /pets', req.body);
-    const queryText = `INSERT INTO pets ("name", "owner_id", "breed", "color", "is_checked_in") 
-    VALUES ($1, $2, $3, $4, $5);`;
-    pool.query(queryText, [req.body.name, req.body.owner_id, req.body.breed, req.body.color, req.body.is_checked_in])
+    const queryText = `INSERT INTO pets ("image_path", "name", "owner_id", "breed", "color", "is_checked_in") 
+    VALUES ($1, $2, $3, $4, $5, $6);`;
+    pool.query(queryText, [req.body.image_path, req.body.name, req.body.owner_id, req.body.breed, req.body.color, req.body.is_checked_in])
     .then((result) => {
         res.sendStatus(201);
     }).catch((error) => {
