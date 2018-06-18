@@ -1,40 +1,45 @@
 <div ng-controller="petController as PC" class="container">
+
+<br><br>
+
 <h2>Add Pet</h2>
 
 <form ng-submit="PC.addPet()">
 <input ng-model="PC.petNameIn" type="text" placeholder="Pet Name">
 <input ng-model="PC.petColorIn" type="text" placeholder="Pet Color">
 <input ng-model="PC.petBreedIn" type="text" placeholder="Pet Breed">
-<select ng-controller="ownerController as OC" ng-model="PC.ownerIn">
-    <!-- not selected / blank option -->
+<select class="btn-group" ng-controller="ownerController as OC" ng-model="PC.ownerIn">
     <option value="">---Please select---</option>
-    <!-- repeat over ships -->
     <option ng-repeat="owner in OC.ownersArray" value="{{owner.id}}">{{owner.first_name}} {{owner.last_name}}</option>
 </select>
-<input type="submit">
+<input type="submit" class="btn btn-secondary btn-sm">
 </form>
+
+<br><br>
 
 <h2>History</h2>
 
-<table>
-    <th>
-    <tr>
-        <td>Owner</td>
-        <td>Pet</td>
-        <td>Breed</td>
-        <td>Color</td>
-        <td>Checked In</td>
-        <td>Actions</td>
-    </tr>
-    </th>
-    <tr ng-repeat="pet in PC.petsArray">
-            <td>{{pet.first_name}} {{pet.last_name}}</td>
-            <td>{{pet.name}}</td>
-            <td>{{pet.breed}}</td>
-            <td>{{pet.color}}</td>
-            <td><button ng-click="PC.petToggle(pet)" >{{pet.is_checked_in}}</button></td>
-           
-            <td><button ng-click="PC.deletePet($index)">Delete</button></td>
-    </tr>
+<table class="table table-striped">
+    <thead class="white">
+        <tr>
+            <td>Owner</td>
+            <td>Pet</td>
+            <td>Breed</td>
+            <td>Color</td>
+            <td>Checked In</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody class = "white">
+        <tr ng-repeat="pet in PC.petsArray">
+                <td>{{pet.first_name}} {{pet.last_name}}</td>
+                <td>{{pet.name}}</td>
+                <td>{{pet.breed}}</td>
+                <td>{{pet.color}}</td>
+                <td><button class="btn btn-secondary btn-sm" value="{{pet.is_checked_in}}" ng-click="PC.petToggle(pet)" >{{pet.is_checked_in}}</button></td>
+                <td><button class="btn btn-warning btn-sm" ng-click="PC.deletePet($index)">Delete</button></td>
+        </tr>
+    </tbody>
 </table>
+
 </div>

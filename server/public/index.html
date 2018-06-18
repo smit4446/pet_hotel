@@ -6,18 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.js"></script>
+
     <script src="scripts/client.js"></script>
     <script src="scripts/services/petService.js"></script>
     <script src="scripts/controllers/owner.controller.js"></script>
     <script src="scripts/controllers/pet.controller.js"></script>
+
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="styles/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+   
     <title>Pet Hotel</title>
 </head>
+
 <body ng-app="myApp">
+    <div class="jumbotron">
         <h1>Philly's Taft Hotel</h1>
+    </div>
     <div class="nav container">
-        <a ng-href="/"><button>Dashboard</button></a>
-        <a ng-href="#!/owners"><button>Manage Owners</button></a> 
+        <btn-toolbar>
+            <a ng-href="/"><button class="btn btn-info custom btn-lg">Dashboard</button></a>
+            <a ng-href="#!/owners"><button class="btn btn-info custom btn-lg">Manage Owners</button></a>
+        </btn-toolbar>
     </div>
     <ng-view>
 

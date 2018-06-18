@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
 
   router.put('/', (req,res) => {
     console.log('In pets-router PUT to update');
-    const queryText = 'UPDATE pets SET is_checked_in = $1 where id=$2;';
+    const queryText = 'UPDATE pets SET is_checked_in = $1 WHERE id=$2;';
     pool.query(queryText, [req.body.is_checked_in, req.body.id])
       .then((results)=>{
         res.sendStatus(200);

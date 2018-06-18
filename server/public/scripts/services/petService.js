@@ -11,7 +11,7 @@ myApp.service('petService', function($http){
        }).catch(function(error){
           console.log(`Error handling GET for /pets`, error);
        })
-    } // end getPets
+    } 
 
     vm.getOwners = function(){
         return $http({

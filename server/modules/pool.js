@@ -3,11 +3,11 @@ const Pool = pg.Pool;
 
 const DATABASE_NAME = 'pet_hotel';
 const config = {
-  database: DATABASE_NAME, // the name of the db to connect to
-  host: 'localhost',       // where the db is located
-  port: 5432,              // the port the db is listening on
-  max: 10,                 // max number of connections
-  idleTimeoutMillis: 30000 // limit of 30 seconds to connect
+  database: DATABASE_NAME, 
+  host: 'localhost',     
+  port: 5432,              
+  max: 10,               
+  idleTimeoutMillis: 30000 
 }
 
 const pool = new Pool(config);

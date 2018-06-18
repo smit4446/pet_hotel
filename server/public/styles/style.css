@@ -1,3 +1,30 @@
 h1 {
     text-align: center;
+    font-family: 'Satisfy', cursive;
+    font-size: 50px;
+}
+
+.header {
+    text-decoration-line: underline;
+    font-size: 20px;
+}
+
+.custom {
+    width: 400px !important;  
+}
+
+td {
+    font-family: 'Open Sans', sans-serif;
+}
+h2 {
+    font-family: 'Open Sans', sans-serif;
+}
+.jumbotron {
+    background-color: #AA4D39;
+}
+body {
+    background-color: #EED7CD;
+}
+.white{
+    background-color: white;
 }
