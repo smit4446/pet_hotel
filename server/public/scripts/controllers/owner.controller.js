@@ -10,13 +10,15 @@ myApp.controller('ownerController', function(petService){
     }
 
     vm.deleteOwner = function(index){
-        newData = vm.ownersArray[index].id;
-        console.log('in deleteOwner', newData );
-        petService.deleteOwners(newData)
-        .then(function(){
-            vm.showOwners()
-        })        
-    };
+        if(confirm('Are you sure you want to delete this owner?')){
+            newData = vm.ownersArray[index].id;
+            console.log('in deleteOwner', newData );
+            petService.deleteOwners(newData)
+            .then(function(){
+                vm.showOwners()
+            })        
+        }
+    }
 
     vm.addOwner = function(newOwner) {
         petService.postOwner(newOwner)

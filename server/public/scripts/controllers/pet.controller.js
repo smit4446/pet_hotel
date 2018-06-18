@@ -9,6 +9,7 @@ myApp.controller('petController', function(petService){
     };
    
     vm.deletePet = function(index){
+        if(confirm('Are you sure you want to delete this guest?')){
         newData = vm.petsArray[index].id;
         console.log('in deletePet', newData );
         petService.deletePet(newData)
@@ -16,6 +17,7 @@ myApp.controller('petController', function(petService){
             vm.showPets()
         })        
     }
+}
 
     vm.addPet = function(){
         vm.newPetIn = {
@@ -37,16 +39,18 @@ myApp.controller('petController', function(petService){
     }
 
     vm.petToggle = function(pet){
-       let checkedInStatus = pet.is_checked_in == 'OUT' ? 'IN' : 'OUT';
-        vm.checkedIn = {
-            is_checked_in: checkedInStatus,
-            id: pet.id
-        }
-        petService.petUpdate = vm.checkedIn;
-        petService.putPet()
-        .then(function(){
-            vm.showPets();
-        })
+        if(confirm('Are you sure you want to check out this guest?')){
+            let checkedInStatus = pet.is_checked_in == 'OUT' ? 'IN' : 'OUT';
+            vm.checkedIn = {
+                is_checked_in: checkedInStatus,
+                id: pet.id
+            }
+            petService.petUpdate = vm.checkedIn;
+            petService.putPet()
+            .then(function(){
+                vm.showPets();
+            })
+        }   
     }
 
     vm.clearFields = function(){
